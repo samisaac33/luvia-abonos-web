@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+/* Marca Luvia: crema + teal */
+:root {
+  --background: #f5f2eb;
+  --foreground: #152a26;
+  --muted: #5c6966;
+  --card: #ffffff;
+  --primary: #0a5c4f;
+  --primary-foreground: #f0fdf9;
+  --accent: #d4efea;
+  --border: #dfe8e6;
+  --ring: #0d9488;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-card: var(--card);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent: var(--accent);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --font-sans: var(--font-plus-jakarta);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0f1715;
+    --foreground: #f0fdf9;
+    --muted: #94a3a8;
+    --card: #162321;
+    --primary: #2dd4bf;
+    --primary-foreground: #042f2e;
+    --accent: #134e4a;
+    --border: #274442;
+    --ring: #2dd4bf;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
