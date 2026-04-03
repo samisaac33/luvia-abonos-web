@@ -1,5 +1,8 @@
 export const SITE_NAME = "Luvia Soluciones Orgánicas";
 
+/** Correo de contacto público (debe coincidir con buzón real / Resend). */
+export const SITE_CONTACT_EMAIL = "contacto@lluviagro.com";
+
 /** Propuesta de valor (hero, OG, meta cuando se combina con la marca). */
 export const SITE_TAGLINE =
   "Fertilizantes y Abonos Orgánicos de Alta Eficiencia";

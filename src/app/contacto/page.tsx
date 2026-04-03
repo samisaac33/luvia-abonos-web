@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 
 import { ContactForm } from "@/components/contact/ContactForm";
-import { SITE_DESCRIPTION, SITE_NAME } from "@/lib/site";
+import {
+  SITE_CONTACT_EMAIL,
+  SITE_DESCRIPTION,
+  SITE_NAME,
+} from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contacto",
@@ -32,7 +36,12 @@ export default function ContactoPage() {
             </li>
             <li>
               <span className="font-medium text-[var(--foreground)]">Email:</span>{" "}
-              contacto@ejemplo.com
+              <a
+                href={`mailto:${SITE_CONTACT_EMAIL}`}
+                className="text-[var(--foreground)] underline-offset-4 hover:underline"
+              >
+                {SITE_CONTACT_EMAIL}
+              </a>
             </li>
           </ul>
         </div>
