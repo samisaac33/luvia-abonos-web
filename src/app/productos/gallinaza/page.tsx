@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
+import { PageHero } from "@/components/ui/PageHero";
+import { SectionImage } from "@/components/ui/SectionImage";
+import { siteImages } from "@/lib/images";
 import { SITE_NAME } from "@/lib/site";
 
 const faqs = [
@@ -52,8 +55,11 @@ export default function GallinazaSeoPage() {
   return (
     <>
       <FaqJsonLd items={faqs} />
-      <article className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
-        <header>
+      <PageHero
+        src={siteImages.hero.gallinaza}
+        alt="Invernadero con plantas y suelo enriquecido"
+      >
+        <header className="max-w-3xl">
           <p className="text-sm font-medium uppercase tracking-wide text-[var(--primary)]">
             Abono orgánico · formato sólido
           </p>
@@ -68,8 +74,16 @@ export default function GallinazaSeoPage() {
             para integrar en planes de fertilización sostenible.
           </p>
         </header>
+      </PageHero>
 
-        <section className="mt-12 space-y-4 text-[var(--muted)]">
+      <article className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
+        <SectionImage
+          src={siteImages.products["compost-gallinaza"]}
+          alt="Compost orgánico y materia vegetal en cultivo"
+          className="mb-12"
+        />
+
+        <section className="space-y-4 text-[var(--muted)]">
           <h2 className="text-xl font-semibold text-[var(--foreground)]">
             Por qué encaja en tu sistema de fertilización
           </h2>

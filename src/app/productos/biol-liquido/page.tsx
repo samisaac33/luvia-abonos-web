@@ -2,23 +2,33 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
+import { BiolAgenticTools } from "@/components/biol/BiolAgenticTools";
+import { PageHero } from "@/components/ui/PageHero";
+import { SectionImage } from "@/components/ui/SectionImage";
+import { biolKnowledge } from "@/lib/biol-knowledge";
+import { siteImages } from "@/lib/images";
 import { SITE_NAME } from "@/lib/site";
 
 const faqs = [
   {
     question: "¿Qué es el biol líquido o digestato?",
     answer:
-      "El biol líquido suele referirse a fertilizantes orgánicos o orgánico-minerales en forma líquida. En nuestro catálogo, el digestato procede de biodigestión anaerobia de residuos valorizados: aporta nutrientes y fracción orgánica en suspensión o disuelta, útil como complemento del plan de fertirriego o aplicación al suelo según criterio técnico.",
+      "El biol líquido es un fertilizante orgánico 100 % natural en formato líquido, obtenido por biodigestión anaerobia. Aporta nutrientes, materia orgánica soluble, microorganismos beneficiosos y ácidos húmicos y fúlvicos. Es útil como complemento del plan de fertirriego o aplicación al suelo según criterio técnico.",
   },
   {
     question: "¿Se puede usar en fertirriego?",
     answer:
-      "Depende de la calidad del producto, filtración, compatibilidad con el sistema y recomendación técnica. Conviene pruebas a pequeña escala y revisión de goteros, filtros y mezclas con otros productos antes de extender a toda la instalación.",
+      "Sí, mediante riego, fertirriego, aspersión o mochila. Conviene pruebas a pequeña escala y revisión de goteros, filtros y mezclas con otros productos antes de extender a toda la instalación.",
   },
   {
     question: "¿Biol líquido frente a abono sólido?",
     answer:
       "No compiten: se complementan. El sólido (gallinaza, compost) actúa con más énfasis en materia orgánica y efecto a medio plazo en el suelo; el líquido puede integrarse para aportes más rápidos o vía riego. La dosis global debe coordinarse con asesoramiento.",
+  },
+  {
+    question: "¿Cuáles son las dosis recomendadas?",
+    answer:
+      "Dependen del cultivo. Por ejemplo: ornamentales 1 L biol + 10 L agua cada 7–10 días; banano 1,5–2 L + 8–10 L agua por planta cada 15 días; maíz 80–120 L/ha diluidos en 200–400 L de agua. Consulta la tabla de dosis en esta página o contacta para asesoramiento personalizado.",
   },
   {
     question: "¿Cómo solicitar biol o digestato?",
@@ -28,14 +38,15 @@ const faqs = [
 ];
 
 export const metadata: Metadata = {
-  title: "Biol líquido y digestato para riego y suelo",
+  title: "Biol líquido orgánico biofermentado (20 L)",
   description:
-    "Biol líquido y digestato de biodigestión para agricultura: uso en fertirriego y suelo, preguntas frecuentes y producto en catálogo.",
+    "Biol líquido orgánico biofermentado para banano, cacao, café, maíz y ornamentales. Composición, dosis por cultivo y preguntas frecuentes.",
   keywords: [
     "biol líquido",
-    "digestato agrícola",
     "fertilizante orgánico líquido",
+    "biofermentado",
     "fertirriego orgánico",
+    "digestato agrícola",
   ],
   alternates: {
     canonical: "/productos/biol-liquido",
@@ -43,7 +54,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: `Biol líquido | ${SITE_NAME}`,
     description:
-      "Digestato y biol para integrar en planes de nutrición del cultivo.",
+      "Fertilizante líquido orgánico biofermentado para integrar en planes de nutrición del cultivo.",
   },
 };
 
@@ -51,64 +62,143 @@ export default function BiolLiquidoSeoPage() {
   return (
     <>
       <FaqJsonLd items={faqs} />
-      <article className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
-        <header>
+      <PageHero
+        src={siteImages.hero.biolLiquido}
+        alt="Plantación agrícola con sistema de riego"
+      >
+        <header className="max-w-3xl">
           <p className="text-sm font-medium uppercase tracking-wide text-[var(--primary)]">
-            Nutrición · formato líquido
+            Nutrición · formato líquido · {biolKnowledge.presentation}
           </p>
           <h1 className="mt-3 text-3xl font-bold tracking-tight text-[var(--foreground)] sm:text-4xl">
-            Biol líquido y digestato para cultivos exigentes
+            Biol líquido orgánico biofermentado
           </h1>
           <p className="mt-4 text-lg text-[var(--muted)]">
-            El formato líquido permite integrar{" "}
+            Fertilizante líquido{" "}
             <strong className="font-semibold text-[var(--foreground)]">
-              nutrientes y materia orgánica soluble o en suspensión
+              100 % orgánico
             </strong>{" "}
-            en sistemas de riego y en aplicaciones al suelo cuando procede.
+            por biodigestión anaerobia. Ideal para banano, cacao, café, maíz y
+            ornamentales.
           </p>
         </header>
+      </PageHero>
+
+      <article className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
+        <SectionImage
+          src={siteImages.products["biol-porcino"]}
+          alt="Bidones de fertilizante líquido orgánico en campo"
+          className="mb-12"
+        />
+
+        <section className="space-y-4 text-[var(--muted)]">
+          <h2 className="text-xl font-semibold text-[var(--foreground)]">
+            Composición destacada
+          </h2>
+          <ul className="grid gap-3 sm:grid-cols-2">
+            {[
+              ["Nitrógeno total", biolKnowledge.composition.nitrogen],
+              ["Fósforo", biolKnowledge.composition.phosphorus],
+              ["Potasio", biolKnowledge.composition.potassium],
+              ["pH", biolKnowledge.composition.ph],
+              ["Conductividad", biolKnowledge.composition.conductivity],
+              ["Materia orgánica", biolKnowledge.composition.organicMatter],
+            ].map(([label, value]) => (
+              <li
+                key={label}
+                className="rounded-xl border border-[var(--border)] bg-[var(--card)] px-4 py-3 text-sm"
+              >
+                <span className="font-medium text-[var(--foreground)]">
+                  {label}:
+                </span>{" "}
+                {value}
+              </li>
+            ))}
+          </ul>
+        </section>
 
         <section className="mt-12 space-y-4 text-[var(--muted)]">
           <h2 className="text-xl font-semibold text-[var(--foreground)]">
-            Cuándo tiene sentido en tu finca
+            Beneficios principales
+          </h2>
+          <ul className="list-inside list-disc space-y-2">
+            {biolKnowledge.benefits.map((b) => (
+              <li key={b}>{b}</li>
+            ))}
+          </ul>
+        </section>
+
+        <BiolAgenticTools />
+
+        <section className="mt-12 space-y-4 text-[var(--muted)]">
+          <h2 className="text-xl font-semibold text-[var(--foreground)]">
+            Dosis recomendadas por cultivo
+          </h2>
+          <p className="text-sm">{biolKnowledge.disclaimer}</p>
+          <div className="overflow-x-auto rounded-2xl border border-[var(--border)]">
+            <table className="w-full min-w-[32rem] text-left text-sm">
+              <thead className="bg-[var(--card)]">
+                <tr>
+                  <th className="px-4 py-3 font-semibold text-[var(--foreground)]">
+                    Cultivo
+                  </th>
+                  <th className="px-4 py-3 font-semibold text-[var(--foreground)]">
+                    Mezcla
+                  </th>
+                  <th className="px-4 py-3 font-semibold text-[var(--foreground)]">
+                    Frecuencia
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {biolKnowledge.dosages.map((d) => (
+                  <tr
+                    key={d.crop}
+                    className="border-t border-[var(--border)]"
+                  >
+                    <td className="px-4 py-3 align-top font-medium text-[var(--foreground)]">
+                      {d.crop}
+                    </td>
+                    <td className="px-4 py-3 align-top">{d.mixture}</td>
+                    <td className="px-4 py-3 align-top">{d.frequency}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section className="mt-12 space-y-4 text-[var(--muted)]">
+          <h2 className="text-xl font-semibold text-[var(--foreground)]">
+            Modo de aplicación
           </h2>
           <p>
-            Explotaciones con invernadero, frutales en regadío o cultivos donde
-            el calendario aprieta suelen valorar productos que entran bien en
-            circuito de agua o en pulverización al suelo. El digestato bien
-            caracterizado es una pieza más dentro de un{" "}
+            {biolKnowledge.applicationMethods.join(" · ")}. Producto 100 %
+            natural y seguro.
+          </p>
+          <p>
+            Consulta la ficha completa en el{" "}
             <Link
-              href="/productos/abono-organico"
+              href="/productos#biol-porcino"
               className="font-medium text-[var(--primary)] underline-offset-2 hover:underline"
             >
-              plan de abono orgánico
+              catálogo de productos
             </Link>{" "}
-            junto con{" "}
+            o combínalo con{" "}
             <Link
               href="/productos/gallinaza"
               className="font-medium text-[var(--primary)] underline-offset-2 hover:underline"
             >
               materiales sólidos
             </Link>{" "}
-            que mejoran la base del suelo.
-          </p>
-        </section>
-
-        <section className="mt-12 space-y-4 text-[var(--muted)]">
-          <h2 className="text-xl font-semibold text-[var(--foreground)]">
-            Producto en catálogo
-          </h2>
-          <p>
-            Consulta la ficha completa del{" "}
+            dentro de un{" "}
             <Link
-              href="/productos#biol-porcino"
+              href="/productos/abono-organico"
               className="font-medium text-[var(--primary)] underline-offset-2 hover:underline"
             >
-              biol líquido por biodigestión anaerobia
-            </Link>{" "}
-            (origen porcino) con formato, beneficios orientativos y uso
-            sugerido. La disponibilidad y fichas técnicas definitivas las
-            confirmamos por canal comercial.
+              plan de abono orgánico
+            </Link>
+            .
           </p>
         </section>
 

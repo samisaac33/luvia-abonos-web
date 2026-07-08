@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 
 import { ContactForm } from "@/components/contact/ContactForm";
+import { PageHero } from "@/components/ui/PageHero";
+import { siteImages } from "@/lib/images";
 import {
   SITE_CONTACT_EMAIL,
   SITE_DESCRIPTION,
@@ -18,47 +20,62 @@ export const metadata: Metadata = {
 
 export default function ContactoPage() {
   return (
-    <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
-      <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-        <div>
-          <h1 className="text-3xl font-bold tracking-tight text-[var(--foreground)] sm:text-4xl">
-            Contacto
-          </h1>
-          <p className="mt-4 text-lg text-[var(--muted)]">
-            Cuéntanos tu cultivo y lo que necesitas. Responderemos lo antes posible
-            por teléfono o email. También puedes escribirnos por WhatsApp usando
-            el botón flotante.
-          </p>
-          <ul className="mt-8 space-y-3 text-sm text-[var(--muted)]">
-            <li>
-              <span className="font-medium text-[var(--foreground)]">Teléfono:</span>{" "}
-              +34 000 000 000
-            </li>
-            <li>
-              <span className="font-medium text-[var(--foreground)]">Email:</span>{" "}
-              <a
-                href={`mailto:${SITE_CONTACT_EMAIL}`}
-                className="text-[var(--foreground)] underline-offset-4 hover:underline"
-              >
-                {SITE_CONTACT_EMAIL}
-              </a>
-            </li>
-          </ul>
-        </div>
+    <>
+      <PageHero
+        src={siteImages.hero.contacto}
+        alt="Campo agrícola al atardecer"
+      >
+        <h1 className="max-w-2xl text-3xl font-bold tracking-tight text-[var(--foreground)] sm:text-4xl">
+          Contacto
+        </h1>
+        <p className="mt-4 max-w-2xl text-lg text-[var(--muted)]">
+          Cuéntanos tu cultivo y lo que necesitas. Responderemos lo antes posible
+          por teléfono o email. También puedes escribirnos por WhatsApp usando
+          el botón flotante.
+        </p>
+      </PageHero>
 
-        <div className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6 shadow-sm sm:p-8">
-          <h2 className="text-lg font-semibold text-[var(--foreground)]">
-            Formulario
-          </h2>
-          <p className="mt-2 text-sm text-[var(--muted)]">
-            Los campos marcados implícitamente son obligatorios para poder
-            responderte.
-          </p>
-          <div className="mt-8">
-            <ContactForm />
+      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
+        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+          <div>
+            <h2 className="text-lg font-semibold text-[var(--foreground)]">
+              Datos de contacto
+            </h2>
+            <ul className="mt-6 space-y-3 text-sm text-[var(--muted)]">
+              <li>
+                <span className="font-medium text-[var(--foreground)]">Teléfono:</span>{" "}
+                +34 000 000 000
+              </li>
+              <li>
+                <span className="font-medium text-[var(--foreground)]">Email:</span>{" "}
+                <a
+                  href={`mailto:${SITE_CONTACT_EMAIL}`}
+                  className="text-[var(--foreground)] underline-offset-4 hover:underline"
+                >
+                  {SITE_CONTACT_EMAIL}
+                </a>
+              </li>
+            </ul>
+            <p className="mt-8 text-sm text-[var(--muted)]">
+              Si consultas por el biol líquido, indica cultivo, superficie y
+              sistema de riego para orientarte mejor.
+            </p>
+          </div>
+
+          <div className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6 shadow-sm sm:p-8">
+            <h2 className="text-lg font-semibold text-[var(--foreground)]">
+              Formulario
+            </h2>
+            <p className="mt-2 text-sm text-[var(--muted)]">
+              Los campos marcados implícitamente son obligatorios para poder
+              responderte.
+            </p>
+            <div className="mt-8">
+              <ContactForm />
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
