@@ -278,8 +278,3 @@ export function buildContactMessage(result: DosageResult): string {
     "¿Podrían confirmar disponibilidad y orientarme sobre la aplicación?",
   ].join("\n");
 }
-
-export function buildWhatsAppUrl(message: string, phone?: string): string {
-  const digits = (phone?.replace(/\D/g, "") || "34123456789").trim();
-  return `https://wa.me/${digits}?text=${encodeURIComponent(message)}`;
-}

@@ -1,6 +1,7 @@
 import Link from "next/link";
 
-import { SITE_CONTACT_EMAIL, SITE_NAME } from "@/lib/site";
+import { ContactDetails } from "@/components/contact/ContactDetails";
+import { SITE_NAME } from "@/lib/site";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -22,25 +23,9 @@ export function Footer() {
             <p className="text-sm font-semibold text-[var(--foreground)]">
               Contacto
             </p>
-            <ul className="mt-3 space-y-2 text-sm text-[var(--muted)]">
-              <li>
-                <span className="text-[var(--foreground)]">Teléfono:</span>{" "}
-                +34 000 000 000
-              </li>
-              <li>
-                <span className="text-[var(--foreground)]">Email:</span>{" "}
-                <a
-                  href={`mailto:${SITE_CONTACT_EMAIL}`}
-                  className="text-[var(--muted)] underline-offset-4 hover:text-[var(--foreground)] hover:underline"
-                >
-                  {SITE_CONTACT_EMAIL}
-                </a>
-              </li>
-              <li>
-                <span className="text-[var(--foreground)]">Zona:</span>{" "}
-                España (indicar provincia)
-              </li>
-            </ul>
+            <div className="mt-3">
+              <ContactDetails />
+            </div>
           </div>
           <div>
             <p className="text-sm font-semibold text-[var(--foreground)]">
@@ -91,8 +76,7 @@ export function Footer() {
           </div>
         </div>
         <p className="mt-10 border-t border-[var(--border)] pt-8 text-center text-xs text-[var(--muted)]">
-          © {year} {SITE_NAME}. Actualiza teléfono y zona en este bloque cuando
-          los tengas definitivos.
+          © {year} {SITE_NAME}.
         </p>
       </div>
     </footer>

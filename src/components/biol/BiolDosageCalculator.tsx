@@ -5,16 +5,9 @@ import { Calculator, MessageCircle, Send } from "lucide-react";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 
-import {
-  buildContactMessage,
-  buildWhatsAppUrl,
-  calculateDosage,
-  cropOptions,
-  irrigationOptions,
-  type DosageResult,
-  type IrrigationSystem,
-} from "@/lib/biol-calculator";
+import { buildContactMessage, calculateDosage, cropOptions, irrigationOptions, type DosageResult, type IrrigationSystem } from "@/lib/biol-calculator";
 import { biolKnowledge } from "@/lib/biol-knowledge";
+import { getWhatsAppUrl } from "@/lib/site";
 
 const fieldClass =
   "mt-1.5 w-full rounded-lg border border-[var(--border)] bg-[var(--background)] px-3 py-2.5 text-[var(--foreground)] shadow-sm outline-none transition focus:border-[var(--ring)] focus:ring-2 focus:ring-[var(--ring)]/30";
@@ -32,10 +25,7 @@ function ResultCard({ result }: { result: DosageResult }) {
 
   const whatsappHref = useMemo(() => {
     const message = buildContactMessage(result);
-    return buildWhatsAppUrl(
-      message,
-      process.env.NEXT_PUBLIC_WHATSAPP_NUMBER,
-    );
+    return getWhatsAppUrl(message);
   }, [result]);
 
   return (
@@ -112,15 +102,17 @@ function ResultCard({ result }: { result: DosageResult }) {
           <Send className="size-4" aria-hidden />
           Solicitar cotización
         </Link>
-        <a
-          href={whatsappHref}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--card)] px-5 py-2.5 text-sm font-semibold text-[var(--foreground)] transition hover:bg-[var(--accent)]"
-        >
-          <MessageCircle className="size-4" aria-hidden />
-          Enviar por WhatsApp
-        </a>
+        {whatsappHref && (
+          <a
+            href={whatsappHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--card)] px-5 py-2.5 text-sm font-semibold text-[var(--foreground)] transition hover:bg-[var(--accent)]"
+          >
+            <MessageCircle className="size-4" aria-hidden />
+            Enviar por WhatsApp
+          </a>
+        )}
       </div>
     </div>
   );
