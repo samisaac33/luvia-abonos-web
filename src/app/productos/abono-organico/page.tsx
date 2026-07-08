@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
+import { PageHero } from "@/components/ui/PageHero";
+import { SectionImage } from "@/components/ui/SectionImage";
+import { siteImages } from "@/lib/images";
 import { SITE_NAME } from "@/lib/site";
 
 const faqs = [
@@ -50,8 +53,11 @@ export default function AbonoOrganicoSeoPage() {
   return (
     <>
       <FaqJsonLd items={faqs} />
-      <article className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
-        <header>
+      <PageHero
+        src={siteImages.hero.abonoOrganico}
+        alt="Plantas jóvenes creciendo en suelo fértil"
+      >
+        <header className="max-w-3xl">
           <p className="text-sm font-medium uppercase tracking-wide text-[var(--primary)]">
             Guía · fertilización
           </p>
@@ -67,8 +73,16 @@ export default function AbonoOrganicoSeoPage() {
             nutrientes y calendario con criterio agronómico.
           </p>
         </header>
+      </PageHero>
 
-        <section className="mt-12 space-y-4 text-[var(--muted)]">
+      <article className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
+        <SectionImage
+          src={siteImages.sections.cultivos}
+          alt="Campo de cultivos con maquinaria agrícola"
+          className="mb-12"
+        />
+
+        <section className="space-y-4 text-[var(--muted)]">
           <h2 className="text-xl font-semibold text-[var(--foreground)]">
             Por dónde empezar
           </h2>
