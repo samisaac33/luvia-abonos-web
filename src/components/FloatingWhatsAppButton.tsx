@@ -2,15 +2,11 @@
 
 import { MessageCircle } from "lucide-react";
 
-function buildWhatsAppUrl(raw: string | undefined): string {
-  const fallback = "34123456789";
-  const digits = (raw?.replace(/\D/g, "") || fallback).trim();
-  return `https://wa.me/${digits}`;
-}
+import { getWhatsAppUrl } from "@/lib/site";
 
 export function FloatingWhatsAppButton() {
-  const number = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER;
-  const href = buildWhatsAppUrl(number);
+  const href = getWhatsAppUrl();
+  if (!href) return null;
 
   return (
     <a

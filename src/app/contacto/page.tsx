@@ -1,13 +1,10 @@
 import type { Metadata } from "next";
 
+import { ContactDetails } from "@/components/contact/ContactDetails";
 import { ContactForm } from "@/components/contact/ContactForm";
 import { PageHero } from "@/components/ui/PageHero";
 import { siteImages } from "@/lib/images";
-import {
-  SITE_CONTACT_EMAIL,
-  SITE_DESCRIPTION,
-  SITE_NAME,
-} from "@/lib/site";
+import { SITE_DESCRIPTION, SITE_NAME } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contacto",
@@ -41,21 +38,9 @@ export default function ContactoPage() {
             <h2 className="text-lg font-semibold text-[var(--foreground)]">
               Datos de contacto
             </h2>
-            <ul className="mt-6 space-y-3 text-sm text-[var(--muted)]">
-              <li>
-                <span className="font-medium text-[var(--foreground)]">Teléfono:</span>{" "}
-                +34 000 000 000
-              </li>
-              <li>
-                <span className="font-medium text-[var(--foreground)]">Email:</span>{" "}
-                <a
-                  href={`mailto:${SITE_CONTACT_EMAIL}`}
-                  className="text-[var(--foreground)] underline-offset-4 hover:underline"
-                >
-                  {SITE_CONTACT_EMAIL}
-                </a>
-              </li>
-            </ul>
+            <div className="mt-6">
+              <ContactDetails />
+            </div>
           </div>
 
           <div className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6 shadow-sm sm:p-8">
