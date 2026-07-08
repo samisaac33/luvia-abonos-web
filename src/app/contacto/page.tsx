@@ -56,10 +56,6 @@ export default function ContactoPage() {
                 </a>
               </li>
             </ul>
-            <p className="mt-8 text-sm text-[var(--muted)]">
-              Si consultas por el biol líquido, indica cultivo, superficie y
-              sistema de riego para orientarte mejor.
-            </p>
           </div>
 
           <div className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6 shadow-sm sm:p-8">
