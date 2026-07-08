@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
+import { BiolAgenticTools } from "@/components/biol/BiolAgenticTools";
 import { PageHero } from "@/components/ui/PageHero";
 import { SectionImage } from "@/components/ui/SectionImage";
 import { biolKnowledge } from "@/lib/biol-knowledge";
@@ -126,6 +127,8 @@ export default function BiolLiquidoSeoPage() {
             ))}
           </ul>
         </section>
+
+        <BiolAgenticTools />
 
         <section className="mt-12 space-y-4 text-[var(--muted)]">
           <h2 className="text-xl font-semibold text-[var(--foreground)]">

@@ -2,7 +2,8 @@
 
 import * as Label from "@radix-ui/react-label";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
+import { useSearchParams } from "next/navigation";
+import { Suspense, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 
 import {
@@ -12,6 +13,25 @@ import {
 import { cn } from "@/lib/utils";
 
 export function ContactForm() {
+  return (
+    <Suspense fallback={<ContactFormFallback />}>
+      <ContactFormInner />
+    </Suspense>
+  );
+}
+
+function ContactFormFallback() {
+  return (
+    <div className="space-y-6" aria-hidden>
+      {Array.from({ length: 4 }).map((_, i) => (
+        <div key={i} className="h-16 animate-pulse rounded-lg bg-[var(--accent)]" />
+      ))}
+    </div>
+  );
+}
+
+function ContactFormInner() {
+  const searchParams = useSearchParams();
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">(
     "idle",
   );
@@ -21,6 +41,7 @@ export function ContactForm() {
     register,
     handleSubmit,
     reset,
+    setValue,
     formState: { errors },
   } = useForm<ContactFormValues>({
     resolver: zodResolver(contactFormSchema),
@@ -31,6 +52,21 @@ export function ContactForm() {
       message: "",
     },
   });
+
+  useEffect(() => {
+    const crop = searchParams.get("crop");
+    const message = searchParams.get("message");
+    const product = searchParams.get("product");
+
+    if (crop) setValue("crop", crop);
+    if (message) setValue("message", message);
+    else if (product === "biol-liquido") {
+      setValue(
+        "message",
+        "Consulto por biol líquido. Me gustaría recibir orientación sobre dosis y disponibilidad.",
+      );
+    }
+  }, [searchParams, setValue]);
 
   async function onSubmit(data: ContactFormValues) {
     setStatus("loading");
