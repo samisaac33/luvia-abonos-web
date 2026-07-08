@@ -43,20 +43,19 @@ export const products: Product[] = [
   },
   {
     id: "biol-porcino",
-    name: "Biol líquido orgánico biofermentado (20 L)",
-    format: "Líquido · caneca 20 L",
+    name: "Biol líquido por biodigestión anaerobia de residuos porcinos",
+    format: "Líquido (digestato)",
     shortDescription:
-      "Fertilizante líquido 100 % orgánico por biodigestión anaerobia. Ideal para banano, cacao, café, maíz y ornamentales.",
+      "Digestato líquido procedente de biodigestión anaerobia de residuos porcinos.",
     description:
-      "Fertilizante líquido orgánico biofermentado obtenido por biodigestión anaerobia. Aporta nitrógeno, fósforo, potasio, materia orgánica soluble, microorganismos beneficiosos y ácidos húmicos y fúlvicos. Nutrición sostenible con resultados confirmados por análisis de laboratorio.",
+      "Producto líquido obtenido tras un proceso de biodigestión anaerobia de residuos de origen porcino. El digestato puede utilizarse como complemento en planes de fertilización orgánica, aportando nutrientes y componentes orgánicos solubles o en suspensión.",
     benefits: [
-      "Aumenta el crecimiento y vigor de las plantas.",
-      "Regenera suelos degradados y mejora su estructura.",
-      "Actúa como bioestimulante natural y favorece el desarrollo radicular.",
-      "Aplicable por riego, fertirriego, aspersión o mochila.",
+      "Aplicación foliar o al suelo en formato líquido, según recomendación técnica.",
+      "Integración en sistemas que buscan cerrar ciclos de nutrientes con residuos valorizados.",
+      "Posible uso en fertirriego cuando la instalación y el producto lo permiten.",
     ],
     usage:
-      "Diluir según cultivo (p. ej. 1 L biol + 10 L agua en ornamentales; 1,5–2 L + 8–10 L agua por planta en banano). Aplicar cada 7–30 días según cultivo. Verificar compatibilidad con el sistema de riego antes de fertirriego.",
+      "Diluir o aplicar según concentración y cultivo. Verificar compatibilidad con el sistema de riego y realizar pruebas en pequeña escala antes de extender a toda la parcela. Seguir siempre criterio técnico.",
   },
 ];
 

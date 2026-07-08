@@ -106,8 +106,8 @@ export function BiolAdvisorChat() {
             Asesor de biol líquido
           </h2>
           <p className="mt-1 text-sm text-[var(--muted)]">
-            Responde dudas sobre composición, dosis y aplicación. Para
-            cotizaciones, te derivamos a contacto.
+            Responde dudas sobre el digestato del catálogo, fertirriego y uso en
+            campo. Para cotizaciones, te derivamos a contacto.
           </p>
         </div>
       </div>

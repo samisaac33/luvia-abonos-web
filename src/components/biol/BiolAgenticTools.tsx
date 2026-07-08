@@ -1,3 +1,5 @@
+import { SITE_NAME } from "@/lib/site";
+
 import { BiolAdvisorChat } from "./BiolAdvisorChat";
 import { BiolDosageCalculator } from "./BiolDosageCalculator";
 
@@ -15,9 +17,9 @@ export function BiolAgenticTools() {
           Herramientas de asesoramiento
         </h2>
         <p className="mt-2 text-sm text-[var(--muted)]">
-          Calcula una dosis orientativa o pregunta al asesor sobre el biol
-          líquido. Los resultados son una guía inicial; confirma siempre con
-          nuestro equipo técnico.
+          Calcula una estimación orientativa o pregunta al asesor. Los
+          resultados no sustituyen la ficha técnica ni el asesoramiento de{" "}
+          {SITE_NAME}.
         </p>
       </div>
       <div className="grid gap-6 lg:grid-cols-2 lg:items-stretch">

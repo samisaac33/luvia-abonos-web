@@ -1,21 +1,24 @@
-import { biolKnowledge } from "./biol-knowledge";
+import { biolFaqs, biolKnowledge, getBiolProduct } from "./biol-knowledge";
 import { cropOptions, formatDosageSummary, calculateDosage } from "./biol-calculator";
+import { SITE_NAME } from "./site";
 
 export type AdvisorMessage = {
   role: "user" | "assistant";
   content: string;
 };
 
+const product = getBiolProduct();
+
 const GREETING =
-  "Hola, soy el asesor de biol líquido de Luvia. Puedo orientarte sobre composición, dosis por cultivo, modos de aplicación y fertirriego. ¿En qué te ayudo?";
+  `Hola, soy el asesor de biol líquido de ${SITE_NAME}. Puedo orientarte sobre el digestato de nuestro catálogo, fertirriego y uso en campo. ¿En qué te ayudo?`;
 
 const DISCLAIMER = biolKnowledge.disclaimer;
 
 const QUICK_QUESTIONS = [
-  "¿Cuál es la composición del biol?",
-  "¿Dosis para banano?",
+  "¿Qué es el digestato?",
   "¿Se puede usar en fertirriego?",
-  "¿Cuánto cuesta una caneca?",
+  "¿Biol líquido frente a abono sólido?",
+  "¿Cómo solicitar biol?",
 ] as const;
 
 type MatchRule = {
@@ -24,8 +27,6 @@ type MatchRule = {
 };
 
 function includesCrop(input: string, cropId: string): boolean {
-  const crop = cropOptions.find((c) => c.id === cropId);
-  if (!crop) return false;
   const terms: Record<string, string[]> = {
     ornamentales: ["ornamental", "jardín", "jardin", "vivero", "interior"],
     banano: ["banano", "plátano", "platano", "banana"],
@@ -49,7 +50,7 @@ function dosageForCrop(cropId: string, quantity?: number): string {
   const crop = cropOptions.find((c) => c.id === cropId);
   if (!crop) return "";
 
-  let text = `**${crop.label}**\n`;
+  let text = `**${crop.label}** (referencia orientativa para la calculadora)\n`;
   text += `• Mezcla: ${crop.biolPerUnit.min}–${crop.biolPerUnit.max} L biol`;
   if (crop.waterPerUnit) {
     text += ` + ${crop.waterPerUnit.min}–${crop.waterPerUnit.max} L agua`;
@@ -67,44 +68,45 @@ function dosageForCrop(cropId: string, quantity?: number): string {
     }
   }
 
+  text += `\n\nPara dosis definitivas, ${SITE_NAME} confirma ficha técnica y asesoramiento por canal comercial.`;
   return text;
+}
+
+function faqAnswer(questionPattern: RegExp): string | null {
+  const faq = biolFaqs.find((f) => questionPattern.test(f.question));
+  return faq?.answer ?? null;
 }
 
 const rules: MatchRule[] = [
   {
     patterns: [/hola|buenas|hey|saludos/i],
     respond: () =>
-      `${GREETING}\n\nPuedes usar la calculadora de dosis arriba o preguntarme por un cultivo concreto.`,
+      `${GREETING}\n\nPuedes usar la calculadora de dosis en esta página o preguntarme sobre el producto del catálogo.`,
   },
   {
-    patterns: [/composici|nitrógeno|nitrogeno|fósforo|fosforo|potasio|npk|ph|conductividad/i],
-    respond: () =>
-      `**Composición del biol líquido (por litro):**\n• Nitrógeno: ${biolKnowledge.composition.nitrogen}\n• Fósforo: ${biolKnowledge.composition.phosphorus}\n• Potasio: ${biolKnowledge.composition.potassium}\n• pH: ${biolKnowledge.composition.ph}\n• Conductividad: ${biolKnowledge.composition.conductivity}\n• ${biolKnowledge.composition.organicMatter}\n\nPresentación: caneca de ${biolKnowledge.presentation}.`,
+    patterns: [/qué es|que es|digestato|biol líquido|biol liquido/i],
+    respond: () => faqAnswer(/Qué es/) ?? product.description,
   },
   {
     patterns: [/beneficio|ventaja|para qué|para que sirve/i],
     respond: () =>
-      `**Beneficios principales:**\n${biolKnowledge.benefits.map((b) => `• ${b}`).join("\n")}`,
+      `**Beneficios orientativos del catálogo:**\n${product.benefits.map((b) => `• ${b}`).join("\n")}`,
   },
   {
     patterns: [/fertirriego|goteo|gotero|filtro/i],
-    respond: () =>
-      "Sí, el biol se puede usar en **fertirriego** si el producto está bien filtrado y el sistema lo permite. Recomendamos:\n• Prueba piloto en una zona pequeña\n• Revisar filtros y goteros\n• No mezclar con otros productos sin verificar compatibilidad\n• Consultar con un técnico antes de escalar a toda la finca.",
+    respond: () => faqAnswer(/fertirriego/) ?? product.usage,
   },
   {
-    patterns: [/aplic|riego|aspers|mochila|motobomba|modo/i],
-    respond: () =>
-      `**Modos de aplicación:** ${biolKnowledge.applicationMethods.join(", ")}.\n\nEs un producto 100 % natural y seguro. La elección depende de tu cultivo y sistema de riego.`,
+    patterns: [/aplic|riego|uso|diluir|modo/i],
+    respond: () => `**Uso sugerido:** ${product.usage}`,
   },
   {
     patterns: [/sólido|solido|gallinaza|compost|compar/i],
-    respond: () =>
-      "El biol líquido **no compite** con el abono sólido: se complementan. El sólido aporta materia orgánica a medio plazo; el líquido entra bien en riego y aportes más rápidos. Lo ideal es coordinar ambos con asesoramiento técnico.",
+    respond: () => faqAnswer(/frente a abono/) ?? "",
   },
   {
-    patterns: [/precio|cost|comprar|pedir|caneca|disponib|cotiz/i],
-    respond: () =>
-      `Para precio, disponibilidad y envíos, contacta con nuestro equipo mediante el formulario o WhatsApp. Indica cultivo, superficie y sistema de riego para una cotización más precisa.\n\nPresentación estándar: **caneca de 20 L**.`,
+    patterns: [/precio|cost|comprar|pedir|solicitar|disponib|cotiz/i],
+    respond: () => faqAnswer(/solicitar/) ?? "",
   },
   {
     patterns: [/ornamental|jardín|jardin|vivero/i],
@@ -146,10 +148,7 @@ const rules: MatchRule[] = [
           return dosageForCrop(crop.id, extractNumber(input) ?? undefined);
         }
       }
-      const overview = cropOptions
-        .map((c) => `• **${c.shortLabel}:** ${c.biolPerUnit.min}–${c.biolPerUnit.max} L${c.unit === "plant" ? "/planta" : c.unit === "hectare" ? "/ha" : "/aplicación"}`)
-        .join("\n");
-      return `Las dosis dependen del cultivo. Resumen:\n\n${overview}\n\nIndica el cultivo y, si puedes, el número de plantas o hectáreas para una estimación más precisa. También puedes usar la **calculadora de dosis** en esta página.`;
+      return `**Producto en catálogo:** ${product.name}\n\n${product.usage}\n\nPara estimaciones por cultivo, usa la **calculadora de dosis** en esta página o contacta con ${SITE_NAME} para ficha técnica definitiva.`;
     },
   },
 ];
@@ -173,9 +172,11 @@ export function getAdvisorResponse(input: string): string {
   for (const rule of rules) {
     if (rule.patterns.some((p) => p.test(normalized))) {
       const response = rule.respond(normalized);
-      return `${response}\n\n_${DISCLAIMER}_`;
+      if (response) {
+        return `${response}\n\n_${DISCLAIMER}_`;
+      }
     }
   }
 
-  return `Puedo ayudarte con composición, dosis por cultivo (banano, café, cacao, maíz, hortalizas…), fertirriego y modos de aplicación.\n\nPrueba preguntar, por ejemplo: "¿Dosis para 500 plantas de banano?" o usa la calculadora de dosis.\n\n_${DISCLAIMER}_`;
+  return `Puedo ayudarte con información del **${product.name}**: descripción, uso, fertirriego y comparación con abono sólido.\n\nPara dosis concretas, usa la calculadora o contacta con ${SITE_NAME}.\n\n_${DISCLAIMER}_`;
 }
