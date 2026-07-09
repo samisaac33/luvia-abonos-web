@@ -6,7 +6,7 @@ import { SITE_NAME } from "./site";
 export const gallinazaPresentations: readonly ProductPresentation[] = [
   { name: "Saco", capacity: "40 kg", price: "US$2,00" },
   { name: "Big Bag", capacity: "1.000 kg (1 t)", price: "US$35,00" },
-  { name: "A granel", capacity: "Desde 1 t", price: "US$30,00/t" },
+  { name: "A granel", capacity: "8 ton", price: "US$30,00/t" },
 ] as const;
 
 export function formatGallinazaPresentationsSummary(): string {

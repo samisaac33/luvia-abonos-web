@@ -6,7 +6,7 @@ import { SITE_NAME } from "./site";
 export const biolPresentations: readonly ProductPresentation[] = [
   { name: "Caneca", capacity: "20 L", price: "US$20" },
   { name: "IBC (Tote)", capacity: "1.000 L (1 m³)", price: "US$850" },
-  { name: "A granel", capacity: "Desde 5 m³", price: "US$800/m³" },
+  { name: "A granel", capacity: "8 m³", price: "US$800/m³" },
 ] as const;
 
 export function formatBiolPresentationsSummary(): string {
