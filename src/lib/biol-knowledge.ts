@@ -2,6 +2,24 @@ import type { Product } from "./products";
 import { getProductById } from "./products";
 import { SITE_NAME } from "./site";
 
+export type BiolPresentation = {
+  name: string;
+  capacity: string;
+  price: string;
+};
+
+export const biolPresentations: readonly BiolPresentation[] = [
+  { name: "Caneca", capacity: "20 L", price: "US$20" },
+  { name: "IBC (Tote)", capacity: "1.000 L (1 m³)", price: "US$850" },
+  { name: "A granel", capacity: "Desde 5 m³", price: "US$800/m³" },
+] as const;
+
+export function formatBiolPresentationsSummary(): string {
+  return biolPresentations
+    .map((p) => `• ${p.name}: ${p.capacity} — ${p.price}`)
+    .join("\n");
+}
+
 export const biolFaqs = [
   {
     question: "¿Qué es el biol líquido o digestato?",
@@ -17,6 +35,10 @@ export const biolFaqs = [
     question: "¿Biol líquido frente a abono sólido?",
     answer:
       "No compiten: se complementan. El sólido (gallinaza, compost) actúa con más énfasis en materia orgánica y efecto a medio plazo en el suelo; el líquido puede integrarse para aportes más rápidos o vía riego. La dosis global debe coordinarse con asesoramiento.",
+  },
+  {
+    question: "¿Qué presentaciones y precios tiene el biol líquido?",
+    answer: `Disponemos de caneca de 20 L (US$20), IBC o tote de 1.000 L / 1 m³ (US$850) y suministro a granel desde 5 m³ (US$800/m³). Los precios son orientativos; confirma disponibilidad y condiciones de entrega con ${SITE_NAME}.`,
   },
   {
     question: "¿Cómo solicitar biol o digestato?",
@@ -44,6 +66,7 @@ export function getBiolContextForAgent(product: Product): string {
     `Descripción: ${product.description}`,
     `Beneficios: ${product.benefits.join(" ")}`,
     `Uso sugerido: ${product.usage}`,
+    `Presentaciones y precios:\n${formatBiolPresentationsSummary()}`,
     ...biolFaqs.map((f) => `${f.question} ${f.answer}`),
     biolKnowledge.disclaimer,
   ].join("\n");

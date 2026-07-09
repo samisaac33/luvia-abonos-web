@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { PageHero } from "@/components/ui/PageHero";
 import { ProductImage } from "@/components/ui/ProductImage";
+import { BiolPresentationsTable } from "@/components/biol/BiolPresentationsTable";
 import { siteImages } from "@/lib/images";
 import { products } from "@/lib/products";
 import { SITE_DESCRIPTION, SITE_NAME } from "@/lib/site";
@@ -100,6 +101,18 @@ export default function ProductosPage() {
                       </p>
                     </div>
                   </div>
+
+                  {product.id === "biol-porcino" && (
+                    <div className="mt-8">
+                      <h3 className="text-sm font-semibold text-[var(--foreground)]">
+                        Presentaciones y precios
+                      </h3>
+                      <p className="mt-2 text-sm text-[var(--muted)]">
+                        Precios orientativos en dólares estadounidenses.
+                      </p>
+                      <BiolPresentationsTable className="mt-4" />
+                    </div>
+                  )}
 
                   <div className="mt-8">
                     <Link
