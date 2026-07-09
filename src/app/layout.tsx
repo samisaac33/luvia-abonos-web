@@ -100,7 +100,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col font-sans">
         <OrganizationJsonLd />
         <Navbar />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1 w-full min-w-0 overflow-x-clip">{children}</main>
         <Footer />
         <FloatingWhatsAppButton />
       </body>

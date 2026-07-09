@@ -17,7 +17,7 @@ export function PageContainer({
   return (
     <Component
       className={cn(
-        "mx-auto w-full max-w-6xl",
+        "mx-auto w-full max-w-6xl min-w-0",
         pageGutterClass,
         pageSectionYClass,
         className,
@@ -37,7 +37,7 @@ export function PageArticle({ children, className }: PageArticleProps) {
   return (
     <article
       className={cn(
-        "mx-auto w-full max-w-3xl",
+        "mx-auto w-full max-w-3xl min-w-0",
         pageGutterClass,
         pageSectionYClass,
         className,
@@ -69,6 +69,7 @@ export function PageSection({
       aria-labelledby={ariaLabelledBy}
       className={cn(
         variant === "card" && "border-t border-[var(--border)] bg-[var(--card)]",
+        "w-full max-w-full min-w-0",
         className,
       )}
     >

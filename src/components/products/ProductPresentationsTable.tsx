@@ -1,4 +1,5 @@
 import type { ProductPresentation } from "@/lib/product-presentations";
+import { cn } from "@/lib/utils";
 
 type ProductPresentationsTableProps = {
   presentations: readonly ProductPresentation[];
@@ -15,9 +16,12 @@ export function ProductPresentationsTable({
 }: ProductPresentationsTableProps) {
   return (
     <div
-      className={`overflow-x-auto rounded-2xl border border-[var(--border)] ${className ?? ""}`}
+      className={cn(
+        "max-w-full overflow-x-auto rounded-2xl border border-[var(--border)]",
+        className,
+      )}
     >
-      <table className="w-full min-w-[24rem] text-left text-sm">
+      <table className="w-full min-w-0 text-left text-sm sm:min-w-[24rem]">
         <caption className="sr-only">{caption}</caption>
         <thead className="bg-[var(--card)]">
           <tr>
