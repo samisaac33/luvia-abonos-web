@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { ProductPresentationsTable } from "@/components/products/ProductPresentationsTable";
+import { PageContainer } from "@/components/ui/PageContainer";
 import { PageHero } from "@/components/ui/PageHero";
 import { ProductImage } from "@/components/ui/ProductImage";
+import { ProductNavPills } from "@/components/ui/ProductNavPills";
 import { biolPresentations } from "@/lib/biol-knowledge";
 import { gallinazaPresentations } from "@/lib/gallinaza-knowledge";
 import { siteImages } from "@/lib/images";
@@ -46,34 +48,12 @@ export default function ProductosPage() {
             Las dosis y el momento de aplicación deben ajustarse a tu suelo, cultivo
             y asesoramiento profesional.
           </p>
-          <nav
-            className="mt-6 flex flex-wrap gap-3 text-sm font-medium"
-            aria-label="Guías por familia de producto"
-          >
-            <Link
-              href="/productos/abono-organico"
-              className="rounded-full border border-[var(--border)] bg-[var(--card)] px-4 py-2 text-[var(--foreground)] transition hover:bg-[var(--accent)]"
-            >
-              Abono orgánico
-            </Link>
-            <Link
-              href="/productos/gallinaza"
-              className="rounded-full border border-[var(--border)] bg-[var(--card)] px-4 py-2 text-[var(--foreground)] transition hover:bg-[var(--accent)]"
-            >
-              Gallinaza semi compostada
-            </Link>
-            <Link
-              href="/productos/biol-liquido"
-              className="rounded-full border border-[var(--border)] bg-[var(--card)] px-4 py-2 text-[var(--foreground)] transition hover:bg-[var(--accent)]"
-            >
-              Biol líquido
-            </Link>
-          </nav>
+          <ProductNavPills />
         </header>
       </PageHero>
 
-      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
-        <ul className="space-y-16">
+      <PageContainer className="py-10 sm:py-14">
+        <ul className="space-y-12 sm:space-y-16">
           {products.map((product) => {
             const presentationConfig =
               productPresentationConfig[
@@ -84,7 +64,7 @@ export default function ProductosPage() {
               <li
                 key={product.id}
                 id={product.id}
-                className="scroll-mt-24 border-b border-[var(--border)] pb-16 last:border-0 last:pb-0"
+                className="scroll-mt-24 border-b border-[var(--border)] pb-12 last:border-0 last:pb-0 sm:pb-16"
               >
                 <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] lg:items-start">
                   <ProductImage
@@ -155,7 +135,7 @@ export default function ProductosPage() {
             );
           })}
         </ul>
-      </div>
+      </PageContainer>
     </>
   );
 }

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import { ContactDetails } from "@/components/contact/ContactDetails";
 import { ContactForm } from "@/components/contact/ContactForm";
+import { PageContainer } from "@/components/ui/PageContainer";
 import { PageHero } from "@/components/ui/PageHero";
 import { siteImages } from "@/lib/images";
 import { SITE_DESCRIPTION, SITE_NAME } from "@/lib/site";
@@ -32,7 +33,7 @@ export default function ContactoPage() {
         </p>
       </PageHero>
 
-      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
+      <PageContainer>
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
           <div>
             <h2 className="text-lg font-semibold text-[var(--foreground)]">
@@ -56,7 +57,7 @@ export default function ContactoPage() {
             </div>
           </div>
         </div>
-      </div>
+      </PageContainer>
     </>
   );
 }

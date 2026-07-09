@@ -4,6 +4,7 @@ import Link from "next/link";
 import { BiolAgenticTools } from "@/components/biol/BiolAgenticTools";
 import { ProductPresentationsTable } from "@/components/products/ProductPresentationsTable";
 import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
+import { PageArticle } from "@/components/ui/PageContainer";
 import { PageHero } from "@/components/ui/PageHero";
 import { SectionImage } from "@/components/ui/SectionImage";
 import { biolFaqs, biolPresentations } from "@/lib/biol-knowledge";
@@ -55,7 +56,7 @@ export default function BiolLiquidoSeoPage() {
         </header>
       </PageHero>
 
-      <article className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
+      <PageArticle>
         <SectionImage
           src={siteImages.products["biol-liquido"]}
           alt="Biol líquido y digestato para aplicación agrícola"
@@ -149,7 +150,7 @@ export default function BiolLiquidoSeoPage() {
             Consultar biol líquido
           </Link>
         </p>
-      </article>
+      </PageArticle>
     </>
   );
 }

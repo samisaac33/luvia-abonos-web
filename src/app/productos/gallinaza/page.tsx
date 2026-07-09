@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { ProductPresentationsTable } from "@/components/products/ProductPresentationsTable";
 import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
+import { PageArticle } from "@/components/ui/PageContainer";
 import { PageHero } from "@/components/ui/PageHero";
 import { SectionImage } from "@/components/ui/SectionImage";
 import { gallinazaFaqs, gallinazaPresentations } from "@/lib/gallinaza-knowledge";
@@ -54,7 +55,7 @@ export default function GallinazaSeoPage() {
         </header>
       </PageHero>
 
-      <article className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
+      <PageArticle>
         <SectionImage
           src={siteImages.products["gallinaza-semi-compostada"]}
           alt="Gallinaza sólida semi compostada para aplicación agrícola"
@@ -144,7 +145,7 @@ export default function GallinazaSeoPage() {
             Solicitar información sobre gallinaza
           </Link>
         </p>
-      </article>
+      </PageArticle>
     </>
   );
 }
