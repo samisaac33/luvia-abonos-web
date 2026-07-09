@@ -6,7 +6,7 @@ import { SITE_NAME } from "./site";
 export const biolPresentations: readonly ProductPresentation[] = [
   { name: "Caneca", capacity: "20 L", price: "US$20" },
   { name: "IBC (Tote)", capacity: "1.000 L (1 m³)", price: "US$850" },
-  { name: "A granel", capacity: "Desde 5 m³", price: "US$800/m³" },
+  { name: "A granel", capacity: "8 m³", price: "US$800/m³" },
 ] as const;
 
 export function formatBiolPresentationsSummary(): string {
@@ -31,7 +31,7 @@ export const biolFaqs = [
   },
   {
     question: "¿Qué presentaciones y precios tiene el biol líquido?",
-    answer: `Disponemos de caneca de 20 L (US$20), IBC o tote de 1.000 L / 1 m³ (US$850) y suministro a granel desde 5 m³ (US$800/m³). Los precios son orientativos; confirma disponibilidad y condiciones de entrega con ${SITE_NAME}.`,
+    answer: `Disponemos de caneca de 20 L (US$20), IBC o tote de 1.000 L / 1 m³ (US$850) y suministro a granel de 8 m³ (US$800/m³). Los precios son orientativos; confirma disponibilidad y condiciones de entrega con ${SITE_NAME}.`,
   },
   {
     question: "¿Cómo solicitar biol o digestato?",
