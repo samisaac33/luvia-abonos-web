@@ -1,7 +1,15 @@
 
 import { getSiteContact } from "@/lib/site";
 
-export function ContactDetails() {
+type ContactDetailsProps = {
+  showWhatsApp?: boolean;
+  showZone?: boolean;
+};
+
+export function ContactDetails({
+  showWhatsApp = true,
+  showZone = true,
+}: ContactDetailsProps) {
   const contact = getSiteContact();
 
   return (
@@ -21,7 +29,7 @@ export function ContactDetails() {
           )}
         </li>
       )}
-      {contact.whatsappUrl && (
+      {showWhatsApp && contact.whatsappUrl && (
         <li>
           <span className="font-medium text-[var(--foreground)]">WhatsApp:</span>{" "}
           <a
@@ -49,7 +57,7 @@ export function ContactDetails() {
           {contact.address}
         </li>
       )}
-      {contact.zone && (
+      {showZone && contact.zone && (
         <li>
           <span className="font-medium text-[var(--foreground)]">Zona:</span>{" "}
           {contact.zone}

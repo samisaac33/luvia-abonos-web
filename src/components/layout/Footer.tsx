@@ -24,7 +24,7 @@ export function Footer() {
               Contacto
             </p>
             <div className="mt-3">
-              <ContactDetails />
+              <ContactDetails showWhatsApp={false} showZone={false} />
             </div>
           </div>
           <div>
@@ -42,18 +42,10 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/productos/abono-organico"
-                  className="text-[var(--muted)] underline-offset-4 hover:text-[var(--foreground)] hover:underline"
-                >
-                  Abono orgánico
-                </Link>
-              </li>
-              <li>
-                <Link
                   href="/productos/gallinaza"
                   className="text-[var(--muted)] underline-offset-4 hover:text-[var(--foreground)] hover:underline"
                 >
-                  Gallinaza
+                  Gallinaza sólida semi compostada
                 </Link>
               </li>
               <li>
