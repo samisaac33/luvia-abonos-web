@@ -65,6 +65,11 @@ function ContactFormInner() {
         "message",
         "Consulto por biol líquido. Me gustaría recibir orientación sobre dosis y disponibilidad.",
       );
+    } else if (product === "gallinaza-semi-compostada") {
+      setValue(
+        "message",
+        "Consulto por gallinaza sólida semi compostada. Me gustaría recibir orientación sobre presentaciones y disponibilidad.",
+      );
     }
   }, [searchParams, setValue]);
 

@@ -74,8 +74,8 @@ export default function HomePage() {
               },
               {
                 href: "/productos/gallinaza",
-                title: "Gallinaza y compost",
-                text: "Gallinaza tratada y compost de volteo para suelos que necesitan estructura y nutrientes.",
+                title: "Gallinaza semi compostada",
+                text: "Abono orgánico sólido estabilizado para suelos que necesitan estructura y nutrientes.",
                 image: siteImages.hero.gallinaza,
               },
               {
@@ -180,10 +180,10 @@ export default function HomePage() {
             Nuestros productos
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-center text-[var(--muted)]">
-            Tres soluciones para incorporar materia orgánica y nutrientes a tu
+            Dos soluciones para incorporar materia orgánica y nutrientes a tu
             sistema productivo.
           </p>
-          <ul className="mt-12 grid gap-8 md:grid-cols-3">
+          <ul className="mt-12 grid gap-8 md:grid-cols-2">
             {products.map((product) => (
               <li
                 key={product.id}

@@ -10,39 +10,23 @@ export type Product = {
 
 export const products: Product[] = [
   {
-    id: "estiércol-gallinas",
-    name: "Estiércol de gallinas ponedoras secado térmicamente",
-    format: "Sólido (granulado o particulado según presentación)",
+    id: "gallinaza-semi-compostada",
+    name: "Gallinaza sólida semi compostada",
+    format: "Sólido (semi compostado)",
     shortDescription:
-      "Materia orgánica estabilizada mediante secado térmico, rica en nutrientes y materia orgánica.",
+      "Abono orgánico sólido estabilizado por semi compostaje, rico en materia orgánica y nutrientes.",
     description:
-      "Producto derivado de gallinaza de ponedoras sometida a secado térmico para reducir la humedad y favorecer la manipulación y almacenamiento. Aporta materia orgánica y nutrientes que contribuyen a la fertilidad del suelo cuando se aplica de forma adecuada a la dosis y al cultivo.",
+      "Gallinaza sometida a un proceso de semi compostaje que reduce la humedad, estabiliza la materia orgánica y facilita el manejo en campo. Aporta nutrientes y mejora la fertilidad del suelo cuando se aplica de forma adecuada a la dosis y al cultivo.",
     benefits: [
       "Materia orgánica que mejora la retención de agua y la estructura del suelo.",
-      "Aporte de nutrientes en formas que el cultivo puede utilizar progresivamente.",
-      "Formato sólido apto para incorporación al suelo o preparación de mezclas.",
+      "Aporte progresivo de nutrientes que el cultivo puede utilizar.",
+      "Formato sólido apto para incorporación al suelo o aplicación en cobertera.",
     ],
     usage:
       "Incorporar al suelo según análisis de suelo y asesoramiento agronómico. Ajustar la dosis al cultivo, textura del suelo y objetivos de fertilización. Evitar aplicaciones en exceso.",
   },
   {
-    id: "compost-gallinaza",
-    name: "Compost de gallinaza por volteo",
-    format: "Molido / particulado fino",
-    shortDescription:
-      "Compostaje por volteo que estabiliza la materia orgánica y homogeneiza el producto final.",
-    description:
-      "Compost elaborado a partir de gallinaza sometida a proceso de compostaje con volteos periódicos para favorecer la aeración y la descomposición controlada de la materia orgánica. Presentación molida para una distribución más uniforme en campo o invernadero.",
-    benefits: [
-      "Materia orgánica humificada que mejora la actividad biológica del suelo.",
-      "Textura homogénea que facilita la aplicación mecánica o manual.",
-      "Menor riesgo de picos bruscos de mineralización si el proceso está bien finalizado.",
-    ],
-    usage:
-      "Aplicar en fondo o en cobertera según programa de fertilización. Combinar con otras fuentes según necesidades del cultivo. Consultar con un técnico para dosis y momento de aplicación.",
-  },
-  {
-    id: "biol-porcino",
+    id: "biol-liquido",
     name: "Biol líquido por biodigestión anaerobia de residuos porcinos",
     format: "Líquido (digestato)",
     shortDescription:
@@ -66,9 +50,8 @@ export function getProductById(id: string): Product | undefined {
 /** Ruta SEO por familia de producto (landings informativas). */
 export function getProductLandingPath(productId: string): string {
   const map: Record<string, string> = {
-    "estiércol-gallinas": "/productos/gallinaza",
-    "compost-gallinaza": "/productos/gallinaza",
-    "biol-porcino": "/productos/biol-liquido",
+    "gallinaza-semi-compostada": "/productos/gallinaza",
+    "biol-liquido": "/productos/biol-liquido",
   };
   return map[productId] ?? "/productos";
 }

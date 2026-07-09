@@ -1,18 +1,22 @@
-import { biolPresentations } from "@/lib/biol-knowledge";
+import type { ProductPresentation } from "@/lib/product-presentations";
 
-type BiolPresentationsTableProps = {
+type ProductPresentationsTableProps = {
+  presentations: readonly ProductPresentation[];
+  caption: string;
   className?: string;
 };
 
-export function BiolPresentationsTable({ className }: BiolPresentationsTableProps) {
+export function ProductPresentationsTable({
+  presentations,
+  caption,
+  className,
+}: ProductPresentationsTableProps) {
   return (
     <div
       className={`overflow-x-auto rounded-2xl border border-[var(--border)] ${className ?? ""}`}
     >
       <table className="w-full min-w-[24rem] text-left text-sm">
-        <caption className="sr-only">
-          Presentaciones y precios del biol líquido
-        </caption>
+        <caption className="sr-only">{caption}</caption>
         <thead className="bg-[var(--card)]">
           <tr>
             <th
@@ -36,7 +40,7 @@ export function BiolPresentationsTable({ className }: BiolPresentationsTableProp
           </tr>
         </thead>
         <tbody>
-          {biolPresentations.map((presentation) => (
+          {presentations.map((presentation) => (
             <tr
               key={presentation.name}
               className="border-t border-[var(--border)]"

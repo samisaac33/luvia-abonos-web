@@ -1,23 +1,16 @@
 import type { Product } from "./products";
+import { formatPresentationsSummary, type ProductPresentation } from "./product-presentations";
 import { getProductById } from "./products";
 import { SITE_NAME } from "./site";
 
-export type BiolPresentation = {
-  name: string;
-  capacity: string;
-  price: string;
-};
-
-export const biolPresentations: readonly BiolPresentation[] = [
+export const biolPresentations: readonly ProductPresentation[] = [
   { name: "Caneca", capacity: "20 L", price: "US$20" },
   { name: "IBC (Tote)", capacity: "1.000 L (1 m³)", price: "US$850" },
   { name: "A granel", capacity: "Desde 5 m³", price: "US$800/m³" },
 ] as const;
 
 export function formatBiolPresentationsSummary(): string {
-  return biolPresentations
-    .map((p) => `• ${p.name}: ${p.capacity} — ${p.price}`)
-    .join("\n");
+  return formatPresentationsSummary(biolPresentations);
 }
 
 export const biolFaqs = [
@@ -34,7 +27,7 @@ export const biolFaqs = [
   {
     question: "¿Biol líquido frente a abono sólido?",
     answer:
-      "No compiten: se complementan. El sólido (gallinaza, compost) actúa con más énfasis en materia orgánica y efecto a medio plazo en el suelo; el líquido puede integrarse para aportes más rápidos o vía riego. La dosis global debe coordinarse con asesoramiento.",
+      "No compiten: se complementan. La gallinaza sólida semi compostada actúa con más énfasis en materia orgánica y efecto a medio plazo en el suelo; el biol líquido puede integrarse para aportes más rápidos o vía riego. La dosis global debe coordinarse con asesoramiento.",
   },
   {
     question: "¿Qué presentaciones y precios tiene el biol líquido?",
@@ -52,9 +45,9 @@ export const biolKnowledge = {
 } as const;
 
 export function getBiolProduct(): Product {
-  const product = getProductById("biol-porcino");
+  const product = getProductById("biol-liquido");
   if (!product) {
-    throw new Error("Producto biol-porcino no encontrado");
+    throw new Error("Producto biol-liquido no encontrado");
   }
   return product;
 }
