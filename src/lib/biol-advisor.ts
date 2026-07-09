@@ -1,4 +1,9 @@
-import { biolFaqs, biolKnowledge, getBiolProduct } from "./biol-knowledge";
+import {
+  biolFaqs,
+  biolKnowledge,
+  formatBiolPresentationsSummary,
+  getBiolProduct,
+} from "./biol-knowledge";
 import { cropOptions, formatDosageSummary, calculateDosage } from "./biol-calculator";
 import { SITE_NAME } from "./site";
 
@@ -16,6 +21,7 @@ const DISCLAIMER = biolKnowledge.disclaimer;
 
 const QUICK_QUESTIONS = [
   "¿Qué es el digestato?",
+  "¿Qué presentaciones hay?",
   "¿Se puede usar en fertirriego?",
   "¿Biol líquido frente a abono sólido?",
   "¿Cómo solicitar biol?",
@@ -105,8 +111,17 @@ const rules: MatchRule[] = [
     respond: () => faqAnswer(/frente a abono/) ?? "",
   },
   {
+    patterns: [/presentaci|formato|caneca|ibc|tote|granel/i],
+    respond: () =>
+      `**Presentaciones y precios orientativos:**\n${formatBiolPresentationsSummary()}\n\nPara pedidos, logística o cotización formal, contacta con ${SITE_NAME}.`,
+  },
+  {
     patterns: [/precio|cost|comprar|pedir|solicitar|disponib|cotiz/i],
-    respond: () => faqAnswer(/solicitar/) ?? "",
+    respond: () => {
+      const pricing = faqAnswer(/presentaciones y precios/);
+      const request = faqAnswer(/solicitar/);
+      return [pricing, request].filter(Boolean).join("\n\n");
+    },
   },
   {
     patterns: [/ornamental|jardín|jardin|vivero/i],

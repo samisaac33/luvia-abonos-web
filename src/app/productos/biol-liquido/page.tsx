@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { BiolAgenticTools } from "@/components/biol/BiolAgenticTools";
+import { BiolPresentationsTable } from "@/components/biol/BiolPresentationsTable";
 import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
 import { PageHero } from "@/components/ui/PageHero";
 import { SectionImage } from "@/components/ui/SectionImage";
@@ -85,6 +86,18 @@ export default function BiolLiquidoSeoPage() {
             </Link>{" "}
             que mejoran la base del suelo.
           </p>
+        </section>
+
+        <section className="mt-12 space-y-4 text-[var(--muted)]">
+          <h2 className="text-xl font-semibold text-[var(--foreground)]">
+            Presentaciones y precios
+          </h2>
+          <p>
+            El biol líquido se comercializa en distintos formatos según el
+            volumen de tu operación. Los precios son orientativos; confirma
+            disponibilidad y condiciones de entrega con nosotros.
+          </p>
+          <BiolPresentationsTable />
         </section>
 
         <section className="mt-12 space-y-4 text-[var(--muted)]">
