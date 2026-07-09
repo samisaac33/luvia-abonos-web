@@ -93,6 +93,7 @@ export default function GallinazaSeoPage() {
           <ProductPresentationsTable
             presentations={gallinazaPresentations}
             caption="Presentaciones y precios de la gallinaza sólida semi compostada"
+            sizeColumnLabel="Peso"
           />
         </section>
 

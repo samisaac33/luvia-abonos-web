@@ -16,10 +16,12 @@ const productPresentationConfig = {
   "gallinaza-semi-compostada": {
     presentations: gallinazaPresentations,
     caption: "Presentaciones y precios de la gallinaza sólida semi compostada",
+    sizeColumnLabel: "Peso",
   },
   "biol-liquido": {
     presentations: biolPresentations,
     caption: "Presentaciones y precios del biol líquido",
+    sizeColumnLabel: "Capacidad",
   },
 } as const;
 
@@ -116,6 +118,7 @@ export default function ProductosPage() {
                         <ProductPresentationsTable
                           presentations={presentationConfig.presentations}
                           caption={presentationConfig.caption}
+                          sizeColumnLabel={presentationConfig.sizeColumnLabel}
                           className="mt-4"
                         />
                       </div>
