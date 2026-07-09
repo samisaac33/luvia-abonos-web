@@ -17,7 +17,7 @@ export function PageHero({
   priority = false,
 }: PageHeroProps) {
   return (
-    <section className="relative w-full overflow-hidden border-b border-[var(--border)]">
+    <section className="relative isolate w-full max-w-full overflow-hidden border-b border-[var(--border)]">
       <div className="absolute inset-0">
         <Image
           src={src}
@@ -34,7 +34,7 @@ export function PageHero({
       </div>
       <div
         className={cn(
-          "relative mx-auto w-full max-w-6xl py-12 sm:py-20 lg:py-24",
+          "relative mx-auto w-full min-w-0 max-w-6xl py-12 sm:py-20 lg:py-24",
           pageGutterClass,
         )}
       >

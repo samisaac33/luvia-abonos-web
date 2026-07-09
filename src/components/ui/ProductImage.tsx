@@ -15,7 +15,7 @@ export function ProductImage({
 }: ProductImageProps) {
   return (
     <div
-      className={`relative aspect-[4/3] overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--accent)] ${className}`}
+      className={`relative aspect-[4/3] w-full min-w-0 overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--accent)] ${className}`}
     >
       <Image
         src={src}
