@@ -31,7 +31,7 @@ export const biolFaqs = [
   },
   {
     question: "¿Qué presentaciones y precios tiene el biol líquido?",
-    answer: `Disponemos de caneca de 20 L (US$20), IBC o tote de 1.000 L / 1 m³ (US$850) y suministro a granel desde 5 m³ (US$800/m³). Los precios son orientativos; confirma disponibilidad y condiciones de entrega con ${SITE_NAME}.`,
+    answer: `Disponemos de caneca de 20 L (US$20), IBC o tote de 1.000 L / 1 m³ (US$850) y suministro a granel de 8 m³ (US$800/m³). Los precios son orientativos; confirma disponibilidad y condiciones de entrega con ${SITE_NAME}.`,
   },
   {
     question: "¿Cómo solicitar biol o digestato?",

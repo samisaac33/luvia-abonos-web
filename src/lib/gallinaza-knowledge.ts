@@ -26,7 +26,7 @@ export const gallinazaFaqs = [
   },
   {
     question: "¿Qué presentaciones y precios tiene la gallinaza?",
-    answer: `Disponemos de saco de 40 kg (US$2,00), big bag de 1.000 kg / 1 t (US$35,00) y suministro a granel desde 1 t (US$30,00/t). Los precios son orientativos; confirma disponibilidad y condiciones de entrega con ${SITE_NAME}.`,
+    answer: `Disponemos de saco de 40 kg (US$2,00), big bag de 1.000 kg / 1 t (US$35,00) y suministro a granel de 8 ton (US$30,00/t). Los precios son orientativos; confirma disponibilidad y condiciones de entrega con ${SITE_NAME}.`,
   },
   {
     question: "¿Cómo solicitar gallinaza?",
