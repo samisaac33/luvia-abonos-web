@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     template: `%s | ${SITE_NAME}`,
   },
   description:
-    "Luvia Soluciones Orgánicas: abono orgánico, gallinaza compostada y biol líquido para mejorar la fertilidad del suelo y el rendimiento de cultivos.",
+    "Luvia Soluciones Orgánicas: gallinaza sólida semi compostada y biol líquido para mejorar la fertilidad del suelo y el rendimiento de cultivos.",
   keywords: [
     "Luvia",
     "soluciones orgánicas",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     "fertilizante orgánico",
     "fertilizantes agrícolas",
     "gallinaza",
-    "gallinaza compostada",
+    "gallinaza semi compostada",
     "biol líquido",
     "biol para cultivos",
     "mejorador de suelos",
@@ -43,7 +43,6 @@ export const metadata: Metadata = {
     "fertilidad del suelo",
     "agricultura sostenible",
     "insumos agrícolas",
-    "compost gallinaza",
     "abonos para cultivos",
   ],
   authors: [{ name: SITE_NAME }],
@@ -58,7 +57,7 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     title: `${SITE_NAME} | ${SITE_TAGLINE}`,
     description:
-      "Abono orgánico, gallinaza y biol líquido para productores que buscan suelos más sanos y mejores cosechas.",
+      "Gallinaza semi compostada y biol líquido para productores que buscan suelos más sanos y mejores cosechas.",
     images: [
       {
         url: "/og-image",
@@ -72,7 +71,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${SITE_NAME} | ${SITE_TAGLINE}`,
     description:
-      "Abono orgánico, gallinaza y biol líquido para mejorar la productividad agrícola.",
+      "Gallinaza semi compostada y biol líquido para mejorar la productividad agrícola.",
     images: ["/og-image"],
   },
   robots: {

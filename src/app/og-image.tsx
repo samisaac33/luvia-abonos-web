@@ -175,7 +175,7 @@ export default async function OgImage() {
               fontWeight: 400,
             }}
           >
-            Abono orgánico, gallinaza y biol líquido para cultivos más sanos y
+            Gallinaza semi compostada y biol líquido para cultivos más sanos y
             productivos.
           </div>
         </div>
@@ -192,9 +192,7 @@ export default async function OgImage() {
             zIndex: 1,
           }}
         >
-          <span>Abono orgánico</span>
-          <span style={{ color: `${muted}99` }}>·</span>
-          <span>Gallinaza</span>
+          <span>Gallinaza semi compostada</span>
           <span style={{ color: `${muted}99` }}>·</span>
           <span>Biol líquido</span>
         </div>

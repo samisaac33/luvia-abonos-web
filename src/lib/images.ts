@@ -13,9 +13,8 @@ export const siteImages = {
     contacto: "/images/hero-contacto.jpg",
   },
   products: {
-    "estiércol-gallinas": "/images/products/estiercol-gallinas.jpg",
-    "compost-gallinaza": "/images/products/compost-gallinaza.jpg",
-    "biol-porcino": "/images/products/biol-porcino.jpg",
+    "gallinaza-semi-compostada": "/images/products/compost-gallinaza.jpg",
+    "biol-liquido": "/images/products/biol-porcino.jpg",
   },
   sections: {
     cultivos: "/images/sections/cultivos.jpg",

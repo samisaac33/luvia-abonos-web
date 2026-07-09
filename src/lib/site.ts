@@ -29,7 +29,7 @@ export const SITE_TAGLINE =
   "Fertilizantes y Abonos Orgánicos de Alta Eficiencia";
 
 export const SITE_DESCRIPTION =
-  "Soluciones orgánicas para la fertilización del suelo: abonos orgánicos, gallinaza, biol líquido y acompañamiento para cultivos más sanos y rentables.";
+  "Soluciones orgánicas para la fertilización del suelo: gallinaza sólida semi compostada, biol líquido y acompañamiento para cultivos más sanos y rentables.";
 
 /** URL pública del sitio (sin barra final). Usar en JSON-LD, enlaces absolutos, etc. */
 export function getSiteUrl(): string {

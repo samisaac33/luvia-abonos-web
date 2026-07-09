@@ -21,7 +21,7 @@ const faqs = [
   {
     question: `¿Qué productos orgánicos ofrece ${SITE_NAME}?`,
     answer:
-      `${SITE_NAME} trabaja gallinaza y derivados en formato sólido (estiércol tratado térmicamente, compost por volteo) y biol líquido tipo digestato. Cada formato cubre necesidades distintas dentro del mismo plan de fertilización.`,
+      `${SITE_NAME} comercializa gallinaza sólida semi compostada y biol líquido tipo digestato. Cada formato cubre necesidades distintas dentro del mismo plan de fertilización.`,
   },
   {
     question: "¿Necesito análisis de suelo antes de abonar?",
@@ -104,9 +104,9 @@ export default function AbonoOrganicoSeoPage() {
                 href="/productos/gallinaza"
                 className="font-medium text-[var(--primary)] underline-offset-2 hover:underline"
               >
-                Gallinaza y compost
+                Gallinaza semi compostada
               </Link>{" "}
-              — estiércol tratado y compost de volteo.
+              — abono orgánico sólido estabilizado.
             </li>
             <li>
               <Link

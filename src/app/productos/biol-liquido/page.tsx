@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { BiolAgenticTools } from "@/components/biol/BiolAgenticTools";
-import { BiolPresentationsTable } from "@/components/biol/BiolPresentationsTable";
+import { ProductPresentationsTable } from "@/components/products/ProductPresentationsTable";
 import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
 import { PageHero } from "@/components/ui/PageHero";
 import { SectionImage } from "@/components/ui/SectionImage";
-import { biolFaqs } from "@/lib/biol-knowledge";
+import { biolFaqs, biolPresentations } from "@/lib/biol-knowledge";
 import { siteImages } from "@/lib/images";
 import { SITE_NAME } from "@/lib/site";
 
@@ -57,7 +57,7 @@ export default function BiolLiquidoSeoPage() {
 
       <article className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
         <SectionImage
-          src={siteImages.products["biol-porcino"]}
+          src={siteImages.products["biol-liquido"]}
           alt="Biol líquido y digestato para aplicación agrícola"
           className="mb-12"
         />
@@ -97,7 +97,10 @@ export default function BiolLiquidoSeoPage() {
             volumen de tu operación. Los precios son orientativos; confirma
             disponibilidad y condiciones de entrega con nosotros.
           </p>
-          <BiolPresentationsTable />
+          <ProductPresentationsTable
+            presentations={biolPresentations}
+            caption="Presentaciones y precios del biol líquido"
+          />
         </section>
 
         <section className="mt-12 space-y-4 text-[var(--muted)]">
@@ -107,7 +110,7 @@ export default function BiolLiquidoSeoPage() {
           <p>
             Consulta la ficha completa del{" "}
             <Link
-              href="/productos#biol-porcino"
+              href="/productos#biol-liquido"
               className="font-medium text-[var(--primary)] underline-offset-2 hover:underline"
             >
               biol líquido por biodigestión anaerobia
