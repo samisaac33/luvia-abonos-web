@@ -4,12 +4,14 @@ type ProductPresentationsTableProps = {
   presentations: readonly ProductPresentation[];
   caption: string;
   className?: string;
+  sizeColumnLabel?: string;
 };
 
 export function ProductPresentationsTable({
   presentations,
   caption,
   className,
+  sizeColumnLabel = "Capacidad",
 }: ProductPresentationsTableProps) {
   return (
     <div
@@ -29,7 +31,7 @@ export function ProductPresentationsTable({
               scope="col"
               className="px-4 py-3 font-semibold text-[var(--foreground)]"
             >
-              Capacidad
+              {sizeColumnLabel}
             </th>
             <th
               scope="col"

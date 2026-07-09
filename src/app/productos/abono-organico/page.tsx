@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
+import { PageArticle } from "@/components/ui/PageContainer";
 import { PageHero } from "@/components/ui/PageHero";
 import { SectionImage } from "@/components/ui/SectionImage";
 import { siteImages } from "@/lib/images";
@@ -75,7 +76,7 @@ export default function AbonoOrganicoSeoPage() {
         </header>
       </PageHero>
 
-      <article className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
+      <PageArticle>
         <SectionImage
           src={siteImages.sections.cultivos}
           alt="Campo de cultivos con maquinaria agrícola"
@@ -169,7 +170,7 @@ export default function AbonoOrganicoSeoPage() {
             Hablar con el equipo
           </Link>
         </p>
-      </article>
+      </PageArticle>
     </>
   );
 }

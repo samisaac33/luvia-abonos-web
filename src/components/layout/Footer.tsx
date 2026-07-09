@@ -1,14 +1,16 @@
 import Link from "next/link";
 
 import { ContactDetails } from "@/components/contact/ContactDetails";
+import { pageGutterClass } from "@/components/ui/PageContainer";
 import { SITE_NAME } from "@/lib/site";
+import { cn } from "@/lib/utils";
 
 export function Footer() {
   const year = new Date().getFullYear();
 
   return (
     <footer className="border-t border-[var(--border)] bg-[var(--card)]">
-      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
+      <div className={cn("mx-auto max-w-6xl py-12 sm:py-14", pageGutterClass)}>
         <div className="grid gap-10 md:grid-cols-3">
           <div>
             <p className="text-lg font-semibold text-[var(--foreground)]">

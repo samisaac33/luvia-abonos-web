@@ -4,9 +4,9 @@ import { getProductById } from "./products";
 import { SITE_NAME } from "./site";
 
 export const gallinazaPresentations: readonly ProductPresentation[] = [
-  { name: "Bulto", capacity: "50 kg", price: "US$20" },
-  { name: "Big bag (Tote)", capacity: "1.000 kg (1 ton)", price: "US$850" },
-  { name: "A granel", capacity: "Desde 5 ton", price: "US$800/ton" },
+  { name: "Saco", capacity: "40 kg", price: "US$2,00" },
+  { name: "Big Bag", capacity: "1.000 kg (1 t)", price: "US$35,00" },
+  { name: "A granel", capacity: "Desde 1 t", price: "US$30,00/t" },
 ] as const;
 
 export function formatGallinazaPresentationsSummary(): string {
@@ -26,7 +26,7 @@ export const gallinazaFaqs = [
   },
   {
     question: "¿Qué presentaciones y precios tiene la gallinaza?",
-    answer: `Disponemos de bulto de 50 kg (US$20), big bag o tote de 1.000 kg / 1 ton (US$850) y suministro a granel desde 5 ton (US$800/ton). Los precios son orientativos; confirma disponibilidad y condiciones de entrega con ${SITE_NAME}.`,
+    answer: `Disponemos de saco de 40 kg (US$2,00), big bag de 1.000 kg / 1 t (US$35,00) y suministro a granel desde 1 t (US$30,00/t). Los precios son orientativos; confirma disponibilidad y condiciones de entrega con ${SITE_NAME}.`,
   },
   {
     question: "¿Cómo solicitar gallinaza?",
